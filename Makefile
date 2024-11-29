@@ -7,7 +7,7 @@ endif
 APP_NAME := teldrive
 BUILD_DIR := bin
 FRONTEND_DIR := ui/dist
-FRONTEND_ASSET := https://github.com/SamGomes1984/teldrive-ui/releases/download/untagged-e3617421edc0ac926a75/teldrive-ui.zip
+FRONTEND_ASSET := https://github.com/SamGomes1984/teldrive-ui.git
 GIT_TAG := $(shell git describe --tags --abbrev=0)
 GIT_COMMIT := $(shell git rev-parse --short HEAD)
 GIT_LINK := $(shell git remote get-url origin)
