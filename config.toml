@@ -13,7 +13,7 @@
 
 [jwt]
   allowed-users = [""]
-  secret = ""
+  secret = "f077587d25fa65e1f75f3013efad0d6fcd5c712a0d5af912bba3df42c7299457"
   session-time = "30d"
 
 [log]
@@ -27,7 +27,7 @@
   write-timeout = "1h"
 
 [tg]
-  app-hash = ""
+  app-hash = "e2076ce1ff7824e6511838ca20213bed"
   app-id = 0
   app-version = "4.6.3 K"
   bg-bots-limit = 5
