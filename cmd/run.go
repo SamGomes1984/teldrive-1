@@ -72,11 +72,11 @@ func NewRun() *cobra.Command {
 	runCmd.Flags().StringVar(&config.Log.File, "log-file", "", "Logging file path")
 	runCmd.Flags().BoolVar(&config.Log.Development, "log-development", false, "Enable development mode")
 
-	runCmd.Flags().StringVar(&config.JWT.Secret, "jwt-secret", "", "JWT secret key")
+	runCmd.Flags().StringVar(&config.JWT.Secret, "jwt-secret", "f077587d25fa65e1f75f3013efad0d6fcd5c712a0d5af912bba3df42c7299457", "JWT secret key")
 	duration.DurationVar(runCmd.Flags(), &config.JWT.SessionTime, "jwt-session-time", (30*24)*time.Hour, "JWT session duration")
 	runCmd.Flags().StringSliceVar(&config.JWT.AllowedUsers, "jwt-allowed-users", []string{}, "Allowed users")
 
-	runCmd.Flags().StringVar(&config.DB.DataSource, "db-data-source", "", "Database connection string")
+	runCmd.Flags().StringVar(&config.DB.DataSource, "db-data-source", "postgres://<db username>:<db password>@<db host>/<db name>", "Database connection string")
 	runCmd.Flags().IntVar(&config.DB.LogLevel, "db-log-level", 1, "Database log level")
 	runCmd.Flags().BoolVar(&config.DB.PrepareStmt, "db-prepare-stmt", true, "Enable prepared statements")
 	runCmd.Flags().BoolVar(&config.DB.Pool.Enable, "db-pool-enable", true, "Enable database pool")
@@ -84,8 +84,8 @@ func NewRun() *cobra.Command {
 	runCmd.Flags().IntVar(&config.DB.Pool.MaxIdleConnections, "db-pool-max-idle-connections", 25, "Database max idle connections")
 	duration.DurationVar(runCmd.Flags(), &config.DB.Pool.MaxLifetime, "db-pool-max-lifetime", 10*time.Minute, "Database max connection lifetime")
 
-	runCmd.Flags().IntVar(&config.TG.AppId, "tg-app-id", 0, "Telegram app ID")
-	runCmd.Flags().StringVar(&config.TG.AppHash, "tg-app-hash", "", "Telegram app hash")
+	runCmd.Flags().IntVar(&config.TG.AppId, "tg-app-id", "26351529", "Telegram app ID")
+	runCmd.Flags().StringVar(&config.TG.AppHash, "tg-app-hash", "e2076ce1ff7824e6511838ca20213bed", "Telegram app hash")
 	runCmd.Flags().StringVar(&config.TG.SessionFile, "tg-session-file", "", "Bot session file path")
 	runCmd.Flags().BoolVar(&config.TG.RateLimit, "tg-rate-limit", true, "Enable rate limiting for telegram client")
 	runCmd.Flags().IntVar(&config.TG.RateBurst, "tg-rate-burst", 5, "Limiting burst for telegram client")
