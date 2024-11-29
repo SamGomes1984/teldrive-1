@@ -7,7 +7,7 @@ endif
 APP_NAME := teldrive
 BUILD_DIR := bin
 FRONTEND_DIR := ui/dist
-FRONTEND_ASSET := https://github.com/tgdrive/teldrive-ui/archive/refs/heads/main.zip
+FRONTEND_ASSET := https://github.com/SamGomes1984/teldrive-ui/releases/download/untagged-e3617421edc0ac926a75/teldrive-ui.zip
 GIT_TAG := $(shell git describe --tags --abbrev=0)
 GIT_COMMIT := $(shell git rev-parse --short HEAD)
 GIT_LINK := $(shell git remote get-url origin)
@@ -25,16 +25,16 @@ frontend:
 	@echo "Extract UI"
 ifeq ($(OS),Windows_NT)
 	powershell -Command "Remove-Item -Path $(FRONTEND_DIR) -Recurse -Force"
-	powershell -Command "Invoke-WebRequest -Uri $(FRONTEND_ASSET) -OutFile teldrive-ui-main.zip"
+	powershell -Command "Invoke-WebRequest -Uri $(FRONTEND_ASSET) -OutFile teldrive-ui.zip"
 	powershell -Command "if (!(Test-Path -Path $(subst /,\\,$(FRONTEND_DIR)))) { New-Item -ItemType Directory -Force -Path $(subst /,\\,$(FRONTEND_DIR)) }"
-	powershell -Command "Expand-Archive -Path teldrive-ui-main.zip -DestinationPath $(FRONTEND_DIR) -Force"
-	powershell -Command "Remove-Item -Path teldrive-ui-main.zip -Force"
+	powershell -Command "Expand-Archive -Path teldrive-ui.zip -DestinationPath $(FRONTEND_DIR) -Force"
+	powershell -Command "Remove-Item -Path teldrive-ui.zip -Force"
 else
 	rm -rf $(FRONTEND_DIR)
-	curl -LO $(FRONTEND_ASSET) -o teldrive-ui-main.zip
+	curl -LO $(FRONTEND_ASSET) -o teldrive-ui.zip
 	mkdir -p $(FRONTEND_DIR)
-	unzip -d $(FRONTEND_DIR) teldrive-ui-main.zip
-	rm -rf teldrive-ui-main.zip
+	unzip -d $(FRONTEND_DIR) teldrive-ui.zip
+	rm -rf teldrive-ui.zip
 endif
 
 ifeq ($(OS),Windows_NT)
