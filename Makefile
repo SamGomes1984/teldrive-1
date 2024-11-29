@@ -25,16 +25,16 @@ frontend:
 	@echo "Extract UI"
 ifeq ($(OS),Windows_NT)
 	powershell -Command "Remove-Item -Path $(FRONTEND_DIR) -Recurse -Force"
-	powershell -Command "Invoke-WebRequest -Uri $(FRONTEND_ASSET) -OutFile teldrive-ui.zip"
+	powershell -Command "Invoke-WebRequest -Uri $(FRONTEND_ASSET) -OutFile teldrive-ui-main.zip"
 	powershell -Command "if (!(Test-Path -Path $(subst /,\\,$(FRONTEND_DIR)))) { New-Item -ItemType Directory -Force -Path $(subst /,\\,$(FRONTEND_DIR)) }"
-	powershell -Command "Expand-Archive -Path teldrive-ui.zip -DestinationPath $(FRONTEND_DIR) -Force"
-	powershell -Command "Remove-Item -Path teldrive-ui.zip -Force"
+	powershell -Command "Expand-Archive -Path teldrive-ui-main.zip -DestinationPath $(FRONTEND_DIR) -Force"
+	powershell -Command "Remove-Item -Path teldrive-ui-main.zip -Force"
 else
 	rm -rf $(FRONTEND_DIR)
-	curl -LO $(FRONTEND_ASSET) -o teldrive-ui.zip
+	curl -LO $(FRONTEND_ASSET) -o teldrive-ui-main.zip
 	mkdir -p $(FRONTEND_DIR)
-	unzip -d $(FRONTEND_DIR) teldrive-ui.zip
-	rm -rf teldrive-ui.zip
+	unzip -d $(FRONTEND_DIR) teldrive-ui-main.zip
+	rm -rf teldrive-ui-main.zip
 endif
 
 ifeq ($(OS),Windows_NT)
