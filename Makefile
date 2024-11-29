@@ -7,7 +7,7 @@ endif
 APP_NAME := teldrive
 BUILD_DIR := bin
 FRONTEND_DIR := ui/dist
-FRONTEND_ASSET := https://github.com/SamGomes1984/teldrive-ui/releases/download/untagged-e3617421edc0ac926a75/teldrive-ui.zip
+FRONTEND_ASSET := https://github.com/SamGomes1984/teldrive-ui/releases/download/v1/teldrive-ui.zip
 GIT_TAG := $(shell git describe --tags --abbrev=0)
 GIT_COMMIT := $(shell git rev-parse --short HEAD)
 GIT_LINK := $(shell git remote get-url origin)
@@ -31,7 +31,7 @@ ifeq ($(OS),Windows_NT)
 	powershell -Command "Remove-Item -Path teldrive-ui.zip -Force"
 else
 	rm -rf $(FRONTEND_DIR)
-	curl -LO $(FRONTEND_ASSET)
+	curl -LO $(FRONTEND_ASSET) -o teldrive-ui.zip
 	mkdir -p $(FRONTEND_DIR)
 	unzip -d $(FRONTEND_DIR) teldrive-ui.zip
 	rm -rf teldrive-ui.zip
