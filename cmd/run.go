@@ -84,7 +84,7 @@ func NewRun() *cobra.Command {
 	runCmd.Flags().IntVar(&config.DB.Pool.MaxIdleConnections, "db-pool-max-idle-connections", 25, "Database max idle connections")
 	duration.DurationVar(runCmd.Flags(), &config.DB.Pool.MaxLifetime, "db-pool-max-lifetime", 10*time.Minute, "Database max connection lifetime")
 
-	runCmd.Flags().IntVar(&config.TG.AppId, "tg-app-id", "26351529", "Telegram app ID")
+	runCmd.Flags().IntVar(&config.TG.AppId, "tg-app-id", 0 , "Telegram app ID")
 	runCmd.Flags().StringVar(&config.TG.AppHash, "tg-app-hash", "e2076ce1ff7824e6511838ca20213bed", "Telegram app hash")
 	runCmd.Flags().StringVar(&config.TG.SessionFile, "tg-session-file", "", "Bot session file path")
 	runCmd.Flags().BoolVar(&config.TG.RateLimit, "tg-rate-limit", true, "Enable rate limiting for telegram client")
